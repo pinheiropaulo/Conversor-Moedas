@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import "./Conversor.css";
+import { Component } from 'react';
+import './Conversor.css';
 
 export default class Conversor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      moedaA_valor: "",
-      moedaB_valor: 0
+      moedaA_valor: '',
+      moedaB_valor: 0,
     };
     this.converter = this.converter.bind(this);
   }
@@ -16,10 +16,10 @@ export default class Conversor extends Component {
     let url = `https://free.currencyconverterapi.com/api/v5/convert?q=${de_para}&compact=y&apiKey=b03e3d33da24a23de5ce`;
 
     fetch(url)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(json => {
+      .then((json) => {
         let cotacao = json[de_para].val;
         let moedaB_valor = (
           parseFloat(this.state.moedaA_valor) * cotacao
@@ -36,7 +36,7 @@ export default class Conversor extends Component {
         </h2>
         <input
           type="text"
-          onChange={event => {
+          onChange={(event) => {
             this.setState({ moedaA_valor: event.target.value });
           }}
         />
